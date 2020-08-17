@@ -16,7 +16,8 @@ app = Celery('celery_exm')
 # - namespace='CELERY' means all celery-related configuration keys
 #   should have a `CELERY_` prefix.
 app.config_from_object('django.conf:settings')#, namespace='CELERY')
-app.conf.beat_schedule = {
+
+app.conf.beat_schedule = {#for automatic executable program purpose use beat_schedule
     'every-15-seconds':{
         'task':'notification.tasks.send_email',
         'schedule':15,
